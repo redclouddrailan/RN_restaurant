@@ -1,30 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+
+
+import DetailScreen from './screens/DetailScreen';
+import LoginScreen from './screens/LoginScreen';
+import MapScreen from './screens/MapScreen';
+import RatingScreen from './screens/RatingScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ReservationDetailScreen from './screens/ReservationDetailScreen';
+import TransactionScreen from './screens/TransactionScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 export default class App extends React.Component {
+
   render() {
+    const MainNavigator = TabNavigator({
+      welcome: { screen: WelcomeScreen }
+    }//End TabNavigator
+
+  ); // End MainNavigator
     return (
-      <View style={styles.container}>
-         <Text style={styles.titleStyle}>Chow App</Text>
-         <Button
-         large
-          title='Sign In'
-          backgroundColor='white'
-          color='black'
-          buttonStyle={styles.createAccountStyle}
-          />
 
-          <Button
-          large
-           title='Create Account'
-           backgroundColor='white'
-           color='black'
-           buttonStyle={styles.createAccountStyle}
-           />
+        <View style={styles.container}>
+          <MainNavigator />
+        </View>
 
-      </View>
     );
   }
 }
@@ -32,18 +34,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'orange'
-  },
-  titleStyle: {
-    fontSize: 30,
-    color: 'white'
-  },
-  createAccountStyle: {
-    marginTop: 20
+    backgroundColor: '#fff'
   }
-
-
 });
